@@ -15,9 +15,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    //init firebase
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("message");
-    String TAG = "appers";
+
+    String TAG = "view_res";
     TextView textView;
     String a;
 
@@ -25,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+	// To display current states
         textView = (TextView) findViewById(R.id.txtField);
-        textView.setText("testers");
+        textView.setText("hello world");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+	// Change state and upload new data
         Button clickButton = (Button) findViewById(R.id.btn);
         clickButton.setOnClickListener( new View.OnClickListener() {
             @Override
